@@ -38,21 +38,30 @@ object WallService {
     private var posts = emptyArray<Post>()
     var id = 0
 
-    fun add (post: Post): Post {
+    fun add(post: Post): Post {
         posts += post
         id += 1
         return posts.last()
     }
 
     fun update(post: Post): Boolean {
-        return if (post.id == id) {
-            val post = post.copy(ownerId = post.ownerId + 1, fromId = post.fromId + 1, createdBy = post.createdBy + 1,
-                replyOwnerId = post.replyOwnerId + 1,replyPostId = post.replyPostId + 1, signerId = post.signerId + 1,
-                postponedId = post.postponedId + 1)
-            true
-        } else {
-            false
+        for ((index, post1) in posts.withIndex()) {
+            return if (post.id == post1.id) {
+                posts[index] = post.copy(
+                    ownerId = post.ownerId + 1,
+                    fromId = post.fromId + 1,
+                    createdBy = post.createdBy + 1,
+                    replyOwnerId = post.replyOwnerId + 1,
+                    replyPostId = post.replyPostId + 1,
+                    signerId = post.signerId + 1,
+                    postponedId = post.postponedId + 1
+                )
+                true
+            } else {
+                false
+            }
         }
+        return false
     }
 }
 
