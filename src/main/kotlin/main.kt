@@ -4,7 +4,8 @@ fun main() {
     val post = WallService
     post.add(Post(1, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
         1, 1, "1", 1, true, true, true, true,
-        true, true, true, 1 ))
+        true, true, true, 1, 1, 1, null)
+    )
 
 }
 data class Post(
@@ -31,7 +32,11 @@ data class Post(
     val markedAsAdds: Boolean,
     val isFavorite: Boolean,
     val donut: Any,
-    val postponedId: Int)
+    val postponedId: Int,
+    val post_source: Any,
+    val geo: Any,
+    val copy_history: ArrayList<Post>?
+    )
 
 
 object WallService {
