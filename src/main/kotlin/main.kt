@@ -2,9 +2,20 @@
 
 fun main() {
     val post = WallService
+    var arrayOfAttachments = emptyArray<Attachment>()
+    val video = AttachmentVideo( "Ржака! Смотреть до конца!")
+    val text = AttachmentText("Чтобы похудеть надо всего лишь...")
+    val photo = AttachmentPhoto("НА море")
+    val link = AttachmentLink("самый быстрый VPN")
+
+    arrayOfAttachments += video
+    arrayOfAttachments += text
+    arrayOfAttachments += photo
+    arrayOfAttachments += link
+
     post.add(Post(1, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
         1, 1, "1", 1, true, true, true, true,
-        true, true, true, 1, 1, 1, null)
+        true, true, true, 1, 1, 1, null, arrayOfAttachments)
     )
 
 }
@@ -35,7 +46,8 @@ data class Post(
     val postponedId: Int,
     val post_source: Any,
     val geo: Any,
-    val copy_history: ArrayList<Post>?
+    val copy_history: Array<Post>?,
+    val attachment: Array<Attachment>
     )
 
 
