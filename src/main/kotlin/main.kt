@@ -1,11 +1,11 @@
 
 
 fun main() {
-    val post = WallService
-    post.add(Post(1, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
+    val posts = WallService
+    val post1 = posts.add(Post(1, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
         1, 1, "1", 1, true, true, true, true,
         true, true, true, 1 ))
-
+    print(post1.id)
 }
 data class Post(
     var id: Int,
@@ -36,11 +36,12 @@ data class Post(
 
 object WallService {
     private var posts = emptyArray<Post>()
-    var id = 0
+    var postId = 1
 
     fun add(post: Post): Post {
+        post.id = postId
         posts += post
-        id += 1
+        postId++
         return posts.last()
     }
 
