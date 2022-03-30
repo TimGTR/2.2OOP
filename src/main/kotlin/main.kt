@@ -60,9 +60,11 @@ data class Post(
 
 object WallService {
     private var posts = emptyArray<Post>()
+    private var postId = 1
 
     fun add(post: Post): Post {
-        post.id ++
+        post.id = postId
+        postId++
         posts += post
         return posts.last()
     }

@@ -15,11 +15,11 @@ class WallServiceTest {
         val photo = AttachmentPhoto("НА море")
         val link = AttachmentLink( "самый быстрый VPN")
         val arrayOfAttachments = arrayOf(video, text, photo, link)
-        service.add(Post(1, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
+        var result = service.add(Post(1, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
         1, 1, "1", 1, true, true, true, true,
-            true, true, true, 1, 1, 1, null, arrayOfAttachments))
+            true, true, true, 1, 1, 1, null, arrayOfAttachments)).id
 
-        var result = service.id
+
 
         assertNotEquals(0, result)
     }
