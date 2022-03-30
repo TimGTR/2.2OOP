@@ -13,11 +13,17 @@ fun main() {
     arrayOfAttachments += photo
     arrayOfAttachments += link
 
-    post.add(Post(1, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
+    post.add(Post(0, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
+        1, 1, "1", 1, true, true, true, true,
+        true, true, true, 1, 1, 1, null, arrayOfAttachments)
+    )
+    val post1 = WallService
+    post1.add(Post(0, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
         1, 1, "1", 1, true, true, true, true,
         true, true, true, 1, 1, 1, null, arrayOfAttachments)
     )
 
+    println(post.toString())
 }
 data class Post(
     var id: Int,
@@ -51,13 +57,13 @@ data class Post(
     )
 
 
+
 object WallService {
     private var posts = emptyArray<Post>()
-    var id = 0
 
     fun add(post: Post): Post {
+        post.id ++
         posts += post
-        id += 1
         return posts.last()
     }
 

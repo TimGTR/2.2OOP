@@ -1,5 +1,5 @@
 
-import WallService.id
+
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -19,7 +19,7 @@ class WallServiceTest {
         1, 1, "1", 1, true, true, true, true,
             true, true, true, 1, 1, 1, null, arrayOfAttachments))
 
-        val result = service.id
+        var result = service.id
 
         assertNotEquals(0, result)
     }
