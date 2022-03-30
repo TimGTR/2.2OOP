@@ -1,7 +1,7 @@
 
 
 fun main() {
-    val post = WallService
+    val posts = WallService
     var arrayOfAttachments = emptyArray<Attachment>()
     val video = AttachmentVideo( "Ржака! Смотреть до конца!")
     val text = AttachmentText("Чтобы похудеть надо всего лишь...")
@@ -13,17 +13,18 @@ fun main() {
     arrayOfAttachments += photo
     arrayOfAttachments += link
 
-    post.add(Post(0, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
-        1, 1, "1", 1, true, true, true, true,
-        true, true, true, 1, 1, 1, null, arrayOfAttachments)
-    )
-    val post1 = WallService
-    post1.add(Post(0, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
+    val post1 = posts.add(Post(0, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
         1, 1, "1", 1, true, true, true, true,
         true, true, true, 1, 1, 1, null, arrayOfAttachments)
     )
 
-    println(post.toString())
+    val post2 = posts.add(Post(0, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
+        1, 1, "1", 1, true, true, true, true,
+        true, true, true, 1, 1, 1, null, arrayOfAttachments)
+    )
+
+    println(post1.id)
+    println(post2.id)
 }
 data class Post(
     var id: Int,
