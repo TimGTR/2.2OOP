@@ -90,7 +90,7 @@ fun main() {
     WallService.createComment(comment)
     WallService.createComment(comment1)
     WallService.createComment(comment2)
-    WallService.findPostId()
+  //  WallService.findPostId()
     WallService.findpostIdComment()
     WallService.commentsSize()
 

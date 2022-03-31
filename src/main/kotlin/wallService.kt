@@ -35,10 +35,10 @@ object WallService {
             for (post in posts) {
                 if (comment.postId == post.id) {
                     comments += comment
-                    continue}
-//                } else {
-//                    println ("post id ${post.id}")
-//                }
+                    continue
+                } else {
+                    println ("post id ${post.id}")
+                }
             }
         } catch (e: PostNotFoundException) {
             println("Post id in comment ${comment.postId} не найден.")
