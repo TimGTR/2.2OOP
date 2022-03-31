@@ -86,59 +86,15 @@ fun main() {
     val comment2 = Comment(
         500, 1, 1, "1", 1, 1, 1, video, arrayOfAttachments, 1
     )
-    WallService.createComment(comment)
-    WallService.createComment(comment1)
-    WallService.createComment(comment2)
-    println(WallService.comments.size)
-    println(WallService.comments[1].id)
-    println(WallService.comments[0].id)
+    //println(posts.comments)
+//    WallService.createComment(comment)
+//    WallService.createComment(comment1)
+//    WallService.createComment(comment2)
+//    println(WallService.comments.size)
+//    println(WallService.comments[1].id)
+//    println(WallService.comments[0].id)
 }
 
-
-object WallService {
-    private var posts = emptyArray<Post>()
-    var comments = emptyArray<Comment>()
-    private var postId = 1
-
-    fun add(post: Post): Post {
-        post.id = postId
-        postId++
-        posts += post
-        return posts.last()
-    }
-
-    fun update(post: Post): Boolean {
-        for ((index, post1) in posts.withIndex()) {
-            return if (post.id == post1.id) {
-                posts[index] = post.copy(
-                    ownerId = post.ownerId + 1,
-                    fromId = post.fromId + 1,
-                    createdBy = post.createdBy + 1,
-                    replyOwnerId = post.replyOwnerId + 1,
-                    replyPostId = post.replyPostId + 1,
-                    signerId = post.signerId + 1,
-                    postponedId = post.postponedId + 1
-                )
-                true
-            } else {
-                false
-            }
-        }
-        return false
-    }
-
-    fun createComment(comment: Comment) {
-        for (post in posts) {
-            try {
-                if (comment.id == post.id) {
-                    comments += comment
-                }
-            } catch (e: PostNotFoundException) {
-                e.message
-            }
-        }
-    }
-}
 
 
 
