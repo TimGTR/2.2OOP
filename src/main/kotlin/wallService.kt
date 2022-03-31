@@ -31,12 +31,31 @@ object WallService {
     }
 
     fun createComment(comment: Comment) {
-        for (post in posts) {
-            if (comment.id == post.id) {
-                comments += comment
-            } else {
-                throw PostNotFoundException("Пост не найден")
+        try {
+            for (post in posts) {
+                if (comment.postId == post.id) {
+                    comments += comment
+                    continue}
+//                } else {
+//                    println ("post id ${post.id}")
+//                }
             }
+        } catch (e: PostNotFoundException) {
+            println("Post id in comment ${comment.postId} не найден.")
         }
     }
+    fun findPostId () {
+        for (post in posts) {
+            println("Post ID ${post.id}")
+        }
+    }
+    fun findpostIdComment () {
+        for (comment in comments) {
+            println("Comment ID ${comment.id}")
+        }
+    }
+    fun commentsSize () {
+        println("кол-во комментов ${comments.size}")
+    }
+
 }
