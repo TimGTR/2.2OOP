@@ -86,7 +86,9 @@ fun main() {
     val comment2 = Comment(
         500, 1, 1, "1", 1, 1, 1, video, arrayOfAttachments, 1
     )
-    //println(posts.comments)
+    println(post1.id)
+    println(post2.id)
+    println()
 //    WallService.createComment(comment)
 //    WallService.createComment(comment1)
 //    WallService.createComment(comment2)
