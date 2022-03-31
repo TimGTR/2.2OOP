@@ -1,9 +1,7 @@
-
-
 fun main() {
     val posts = WallService
     var arrayOfAttachments = emptyArray<Attachment>()
-    val video = AttachmentVideo( "Ржака! Смотреть до конца!")
+    val video = AttachmentVideo("Ржака! Смотреть до конца!")
     val text = AttachmentText("Чтобы похудеть надо всего лишь...")
     val photo = AttachmentPhoto("НА море")
     val link = AttachmentLink("самый быстрый VPN")
@@ -13,54 +11,93 @@ fun main() {
     arrayOfAttachments += photo
     arrayOfAttachments += link
 
-    val post1 = posts.add(Post(0, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
-        1, 1, "1", 1, true, true, true, true,
-        true, true, true, 1, 1, 1, null, arrayOfAttachments)
+    val post1 = posts.add(
+        Post(
+            0,
+            1,
+            1,
+            1,
+            1,
+            "1",
+            1,
+            1,
+            true,
+            1,
+            1,
+            1,
+            1,
+            1,
+            "1",
+            1,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            1,
+            1,
+            1,
+            null,
+            arrayOfAttachments
+        )
     )
 
-    val post2 = posts.add(Post(0, 1, 1, 1, 1, "1",1, 1, true ,1,1,1,
-        1, 1, "1", 1, true, true, true, true,
-        true, true, true, 1, 1, 1, null, arrayOfAttachments)
+    val post2 = posts.add(
+        Post(
+            0,
+            1,
+            1,
+            1,
+            1,
+            "1",
+            1,
+            1,
+            true,
+            1,
+            1,
+            1,
+            1,
+            1,
+            "1",
+            1,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            1,
+            1,
+            1,
+            null,
+            arrayOfAttachments
+        )
     )
 
-    println(post1.id)
-    println(post2.id)
+    val comment = Comment(
+        1, 1, 1, "1", 1, 1, 1, video, arrayOfAttachments, 1
+    )
+    val comment1 = Comment(
+        2, 1, 1, "1", 1, 1, 1, video, arrayOfAttachments, 1
+    )
+    val comment2 = Comment(
+        500, 1, 1, "1", 1, 1, 1, video, arrayOfAttachments, 1
+    )
+    WallService.createComment(comment)
+    WallService.createComment(comment1)
+    WallService.createComment(comment2)
+    println(WallService.comments.size)
+    println(WallService.comments[1].id)
+    println(WallService.comments[0].id)
 }
-data class Post(
-    var id: Int,
-    val ownerId: Int,
-    val fromId: Int,
-    val createdBy: Int,
-    val date: Int,
-    val text: String,
-    val replyOwnerId: Int,
-    val replyPostId: Int,
-    val friendsOnly: Boolean,
-    val comments: Any,
-    val copyright: Any,
-    val likes: Any,
-    val reposts: Any,
-    val views: Any,
-    val postType: String,
-    val signerId: Int,
-    val canPin: Boolean,
-    val canDelete: Boolean,
-    val canEdit: Boolean,
-    val isPinned: Boolean,
-    val markedAsAdds: Boolean,
-    val isFavorite: Boolean,
-    val donut: Any,
-    val postponedId: Int,
-    val post_source: Any,
-    val geo: Any,
-    val copy_history: Array<Post>?,
-    val attachment: Array<Attachment>
-    )
-
 
 
 object WallService {
     private var posts = emptyArray<Post>()
+    var comments = emptyArray<Comment>()
     private var postId = 1
 
     fun add(post: Post): Post {
@@ -88,6 +125,18 @@ object WallService {
             }
         }
         return false
+    }
+
+    fun createComment(comment: Comment) {
+        for (post in posts) {
+            try {
+                if (comment.id == post.id) {
+                    comments += comment
+                }
+            } catch (e: PostNotFoundException) {
+                e.message
+            }
+        }
     }
 }
 
