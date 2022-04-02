@@ -10,5 +10,5 @@ data class Comment(
     val attachment: Attachment,
     val parentsStack: Array<Attachment>,
     val thread: Any
-        )
+)
 

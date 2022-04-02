@@ -78,24 +78,21 @@ fun main() {
     )
 
     val comment = Comment(
-        1,1, 1, 1, "1", 1, 1, 1, video, arrayOfAttachments, 1
+        1, 1, 1, 1, "1", 1, 1, 1, video, arrayOfAttachments, 1
     )
     val comment1 = Comment(
-        2,2, 1, 1, "1", 1, 1, 1, video, arrayOfAttachments, 1
+        2, 2, 1, 1, "1", 1, 1, 1, video, arrayOfAttachments, 1
     )
     val comment2 = Comment(
-        500,500, 1, 1, "1", 1, 1, 1, video, arrayOfAttachments, 1
+        500, 500, 1, 1, "1", 1, 1, 1, video, arrayOfAttachments, 1
     )
 
     WallService.createComment(comment)
     WallService.createComment(comment1)
-    WallService.createComment(comment2)
-  //  WallService.findPostId()
-    WallService.findpostIdComment()
-    WallService.commentsSize()
+    //WallService.createComment(comment2)
+    println("кол-во комментов ${WallService.commentsSize()}")
 
 
-//    println(WallService.comments[0].id)
 }
 
 

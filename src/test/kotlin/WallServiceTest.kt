@@ -65,4 +65,106 @@ class WallServiceTest {
         val result = service.update(update)
         assertFalse(result)
     }
+
+    @Test(expected = PostNotFoundException::class)
+    fun shouldThrow() {
+        val service = WallService
+
+        var arrayOfAttachments = emptyArray<Attachment>()
+        val video = AttachmentVideo("Ржака! Смотреть до конца!")
+        arrayOfAttachments += video
+        val comment = Comment(
+            500, 500, 1, 1, "1", 1, 1, 1, video , arrayOfAttachments, 1
+        )
+        val post1 = WallService.add(
+            Post(
+                0,
+                1,
+                1,
+                1,
+                1,
+                "1",
+                1,
+                1,
+                true,
+                1,
+                1,
+                1,
+                1,
+                1,
+                "1",
+                1,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                1,
+                1,
+                1,
+                null,
+                arrayOfAttachments
+            )
+        )
+        WallService.createComment(comment)
+    }
+
+    @Test
+    fun createCommentTest() {
+        val service = WallService
+        var arrayOfAttachments = emptyArray<Attachment>()
+        val video = AttachmentVideo("Ржака! Смотреть до конца!")
+        arrayOfAttachments += video
+        val post1 = WallService.add(
+            Post(
+                0,
+                1,
+                1,
+                1,
+                1,
+                "1",
+                1,
+                1,
+                true,
+                1,
+                1,
+                1,
+                1,
+                1,
+                "1",
+                1,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                1,
+                1,
+                1,
+                null,
+                arrayOfAttachments
+            )
+        )
+        val comment = Comment(
+            1, 500, 1, 1, "1", 1, 1, 1, video , arrayOfAttachments, 1
+        )
+        WallService.createComment(comment)
+    }
+
+
+    @Test
+    fun findPostId() {
+    }
+
+    @Test
+    fun findpostIdComment() {
+    }
+
+    @Test
+    fun commentsSize() {
+    }
 }
