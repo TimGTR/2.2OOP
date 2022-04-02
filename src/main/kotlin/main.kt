@@ -90,7 +90,7 @@ fun main() {
     WallService.createComment(comment)
     WallService.createComment(comment1)
     //WallService.createComment(comment2)
-    println("кол-во комментов ${WallService.commentsSize()}")
+    //println("кол-во комментов ${WallService.commentsSize()}")
 
 
 }

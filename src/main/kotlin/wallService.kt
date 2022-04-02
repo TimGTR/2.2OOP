@@ -31,13 +31,13 @@ object WallService {
     }
 
     fun createComment(comment: Comment) {
-        var count = commentsSize()
+        var count = comments.size
             for (post in posts) {
                 if (comment.postId == post.id) {
                     comments += comment
                 }
             }
-        if (commentsSize() == count) {
+        if (comments.size == count) {
             throw PostNotFoundException()
         }
     }
@@ -55,8 +55,8 @@ object WallService {
 //        }
 //    }
 
-    fun commentsSize(): Int {
-        return comments.size
-    }
+//    fun commentsSize(): Int {
+//        return comments.size
+//    }
 
 }
